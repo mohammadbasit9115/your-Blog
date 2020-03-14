@@ -18,14 +18,26 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="nav flex-column">
-                   <li class="nav-item"><a class="nav-link" href="index.html">Mohammad9152</a></li>
-					<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="fashion.html">Fashion</a></li>
-					<li class="nav-item"><a class="nav-link" href="travel.html">Travel</a></li>
-					<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mohammad Basit
+          </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">LogOut</a>
+        </div>
+      </div>
+
+
+					<li class="nav-item"><a class="nav-link" href="index">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="fashion">Fashion</a></li>
+					<li class="nav-item"><a class="nav-link" href="travel">Travel</a></li>
+					<li class="nav-item"><a class="nav-link" href="about">About</a></li>
+					<li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
                 </ul>
             </div>
 			</nav>
