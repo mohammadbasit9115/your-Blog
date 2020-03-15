@@ -13,7 +13,7 @@
 				              <h3 class="mb-2"><a href="single.html"><?php echo $post->title;?></a></h3>
 				              <div class="meta-wrap">
 												<p class="meta">
-				              		<span><i class="icon-calendar mr-2"></i>June 28, 2019</span>
+				              		<span><i class="icon-calendar mr-2"></i>June 28, 2019 </span>
 				              		<span><a href="single.html"><i class="icon-folder-o mr-2"></i>Travel</a></span>
 				              		<span><i class="icon-comment2 mr-2"></i>5 Comment</span>
 				              	</p>

@@ -1,16 +1,16 @@
 <?php 
 namespace App\Post;
-use App\Abstracts\model;
-class PostModel extends model
+use App\Abstracts\Model;
+class PostModel extends Model
 {
     public $id;
     public $title;
     public $content;
     public $img;
     public $time;
-    public $update;
-    public $delete;
-    public $delete_time;
+    public $edit;
+    public $remove;
+    public $re_time;
     
 }
 ?>

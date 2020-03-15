@@ -2,7 +2,7 @@
 		
 	
 
-		<!-- END COLORLIB-MAIN -->
+		
 	<?php include(__DIR__ . "/../layouts/footer.php")?>
   
 
