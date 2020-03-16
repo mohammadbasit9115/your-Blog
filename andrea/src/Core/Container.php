@@ -5,14 +5,28 @@ use PDOException;
 use App\Post\PostControl;
 use App\Post\PostRepo;
 
+
+use App\Auth\UserControl;
+use App\Auth\UserRepo;
 class Container
 {
-protected $instans=[];
-protected  $receipts=[];
+public $instans=[];
+public  $receipts=[];
 public function __construct()
 {
    
     $this->receipts=[
+        "UserControl" => function(){
+            return new UserControl(
+                $this->make("UserRepo")
+            );
+        }
+        ,
+        "UserRepo" => function(){
+            return new UserRepo(
+                $this->make("pdo")
+            );
+        },
         "PostControl" => function(){
             return new PostControl(
                $this->make("PostRepo")

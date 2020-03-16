@@ -19,7 +19,7 @@
 				              	</p>
 			              	</div>
 				              <p class="mb-4"><?php echo $post->content;?></p>
-				              <p><a href="#" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
+				              <p><a href="article?id=<?php echo $post->id ?>"  class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
 				            			</div>
 									</div>
 							</div>

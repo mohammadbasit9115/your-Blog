@@ -11,7 +11,7 @@ abstract class Model implements ArrayAccess
     }
     public function offsetGet($offset)
     {
-        return $this->$offset;
+        return  $this->$offset;
     }
     public function offsetSet($offset, $value)
     {

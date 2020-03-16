@@ -7,6 +7,7 @@ abstract class Controller
       extract($array);
    include __DIR__ .  "/../../views/{$view}.php";
    
+   
    }
 }
 ?>
