@@ -28,18 +28,7 @@ abstract class Repository
        $data = $stmt->fetch(PDO::FETCH_CLASS);
        return $data;
     }
-    public function insert($data)
-    {
-        $table = $this->table();
-        $model = $this->model();
-        $stmt=$this->pdo->prepare(
-            "INSERT INTO $table 
-            ( `title`, `content`, `img`)
-            VALUES 
-            ( :title, :content, :img)");
-            $stmt->execute([":title"=>$data['title'],"content"=>$data['content'],"img"=>$data['img']]);
-
-    }
+    
     public function update($id,$data)
     {
         $table = $this->table();

@@ -7,10 +7,10 @@ class PostModel extends Model
     public $title;
     public $content;
     public $img;
-    public $time;
+   /* public $time;
     public $edit;
     public $remove;
-    public $re_time;
-    
+    public $re_time;*/
+
 }
 ?>

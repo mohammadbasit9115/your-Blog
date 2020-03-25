@@ -1,10 +1,11 @@
 <?php 
 require __DIR__ . "/autolauding.php";
-use App\Core\Container;
-use App\Core\Container2;
+Session_start();
+use App\Core\Container1;
+ $container = new Container1();
 
-$container = new Container();
-$container2 = new Container2();
+
+
 
 
 

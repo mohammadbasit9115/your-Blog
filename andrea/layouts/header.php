@@ -21,25 +21,33 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="nav flex-column">
-        <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Mohammad Basit
-          </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">LogOut</a>
-        </div>
-      </div>
-
-
-					<li class="nav-item"><a class="nav-link" href="index">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="fashion">Fashion</a></li>
-					<li class="nav-item"><a class="nav-link" href="travel">Travel</a></li>
-					<li class="nav-item"><a class="nav-link" href="about">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
+          <?php
+          if(isset($_SESSION['userName'])){
+          echo  '<div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+            echo $_SESSION['userName'];
+            echo ' </a>    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="create">New Article</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="logout">LogOut</a>
+          </div>
+        </div>';
+          }else {
+            echo '<li class="nav-item"><a class="nav-link" href="singup">SingUp</a></li>';
+          }?>
+        
+          <li class="nav-item"><a class="nav-link" href="index">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="fashion">Fashion</a></li>
+          <li class="nav-item"><a class="nav-link" href="travel">Travel</a></li>
+          <li class="nav-item"><a class="nav-link" href="about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
                 </ul>
             </div>
+         
+      
+
+          
+					
 			</nav>
 
 			<div class="p-2 bd-highlight" >

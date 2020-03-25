@@ -10,9 +10,21 @@ $pages = [
     "controller" => "PostControl",
     "action"     => "article"
 ],
+"/create"   =>[
+    "controller" => "PostControl",
+    "action"     => "create"
+],
 "/singup"   =>[
     "controller" => "UserControl",
     "action"     => "regis"
+],
+"/login"   =>[
+    "controller" => "UserControl",
+    "action"     => "login"
+],
+"/logout"   =>[
+    "controller" => "UserControl",
+    "action"     => "logOut"
 ]
 ];
 
@@ -20,13 +32,21 @@ if(isset($pages[$path]))
 {
 $control = $pages[$path]['controller'];
 $action  = $pages[$path]['action'];
-  $control=$container->make($control)->$action();
-  /*if($control == false){
-    $container2->make($control)->$action();
-  }
-*/
 
-
+ $container->make($control)->$action();
 
 }
+
+ 
+   
+
+
+  
+ 
+  
+
+  
+
+
+
 ?>

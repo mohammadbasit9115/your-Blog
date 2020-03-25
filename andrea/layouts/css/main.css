@@ -3,13 +3,18 @@
     
   
 }
-section{
-    
-}
+
 .d-flex.align-items-end.flex-column.bd-highlight.mb-3{
     width: 25%;
 }
 form.sing{
     width:50%;
     height: 100vh;
+}
+.article_img{
+    width :150px;
+    height:150px;
+    background-size: cover;
+    background-origin: content-box;
+    border-radius: 100%;
 }

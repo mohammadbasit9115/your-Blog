@@ -5,30 +5,60 @@ use App\Abstracts\Controller;
 
 class UserControl extends Controller
 {
-    public function __construct(UserRepo $userRepo)
+    public function __construct(UserService $userService)
     {
-        $this->UserRepo = $userRepo;
+        $this->UserService = $userService;
     }
+
+   
     public function regis()
     {
-        if(!empty($_POST))
-        {
-           
-           if(($_POST['email'] === $_POST['conemail']) AND ($_POST['password'] === $_POST['conpassword'])){
-                $password = $_POST['password'];
-                $password =  password_hash($password,PASSWORD_DEFAULT);
-
-                $data = $_POST;
-                $data['password'] = $password;
-                $this->UserRepo->register($data);
-                header("Location:index");
-                die();
-            }else{
-                $this->render("userControl/singup",[]);
+        if(!isset($_SESSION['userName'])){
+            if(!empty($_POST))
+            {
+               
+             if($this->UserService->newUser($_POST))
+             {
+    
+                 header("Location:index");
+                 exit();
+             }
+             else
+             {
+                 echo "the email or password incorrect.";
+             }
             }
-           
+            $this->render("userControl/singup",[]);
+        }else{
+            header("Location:index");
+            exit();
         }
-        $this->render("userControl/singup",[]);
+    }
+    public function login()
+    {
+        $error = '';
+        if(!isset($_SESSION['userName']))
+        {
+            if(!empty($_POST))
+            {
+                if($this->UserService->fetchUser($_POST))
+                {
+                    header('Location: index');
+                    exit();
+                }else{
+                    $error = "The User Name, The Email or Password is incorrect.";
+                }
+            }
+        }else{
+            header("Location: index");
+        }
+        $this->render("userControl/login",["error"=>$error]);
+    }
+    public function logOut()
+    {
+        $this->UserService->unset();
+        header("Location: index");
+        exit();
     }
 }
 ?>

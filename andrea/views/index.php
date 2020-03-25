@@ -8,7 +8,11 @@
 							<?php foreach($posts as $post):?>
 			    			<div class="col-md-12">
 									<div class="blog-entry ftco-animate d-md-flex">
-										<a href="single.html" class="img img-2" ></a>
+										<a href="single.html" class="article_img" style="background-image:url(<?php 
+										$image = $post->img;
+										$UrlImg = preg_match('/your-Blog.*/',$image,$array);
+										$UrlImg = array_shift($array);
+										echo  '/' .$UrlImg;?>)"></a>
 										<div class="text text-2 pl-md-4">
 				              <h3 class="mb-2"><a href="single.html"><?php echo $post->title;?></a></h3>
 				              <div class="meta-wrap">
