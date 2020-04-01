@@ -3,11 +3,13 @@ namespace App\Auth;
 
 use App\Abstracts\Controller;
 
+
 class UserService extends Controller
 {
     public function __construct(UserRepo $userRepo)
     {
         $this->UserRepo = $userRepo;
+
     }
     public function newUser($data)
     {
@@ -22,11 +24,11 @@ class UserService extends Controller
             $password = $data['password'];
             $password =  password_hash($password,PASSWORD_DEFAULT);
             $data['password'] = $password;
-            $this->UserRepo->register($data);
-           
-            $_SESSION['userName']=$data['username'];
+         $user = $this->UserRepo->register($data) ;
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['userName']=$user['username'];
             session_regenerate_id(true);
-            return true;
+            return true; 
         }else{
             return false;
         } 
@@ -34,14 +36,15 @@ class UserService extends Controller
 
     public function fetchUser($data)
     {
-        if(isset($data['userData']) && isset($data['password']))
+        if(isset($data['email']) && isset($data['password']))
         {
-            $userData = $data['userData'];
-           $user= $this->UserRepo->login($userData);
+            $userData = $data['email'];
+            $user= $this->UserRepo->login($userData);
             $password = $data['password'];
             if(password_verify($password,$user['password']))
             {
              $_SESSION['userName']=$user['username'];
+             $_SESSION['user_id'] = $user['id'];
              session_regenerate_id(true);
              return true;
             }else

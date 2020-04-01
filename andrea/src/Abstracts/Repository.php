@@ -1,5 +1,7 @@
 <?php 
 namespace App\Abstracts;
+
+use App\Post\PostModel;
 use PDO;
 abstract class Repository
 {
@@ -33,15 +35,20 @@ abstract class Repository
     {
         $table = $this->table();
         $model = $this->model();  
+        $stmt = $this->pdo->prepare("UPDATE `$table` SET `title`= :title , `content`=:content , `img`=:img WHERE `id`=:id");
+        $stmt->execute(['title'=>$data['title'],'content'=>$data['content'],"img"=>$data['img'],'id'=>$id]);
 
     }
     
     public function delete($id)
     {
         $table = $this->table();
-        $model = $this->model();  
+        $model = $this->model(); 
+        $stmt = $this->pdo->prepare("DELETE FROM `$table` WHERE `id`=:id");
+        $stmt->execute(['id'=>$id]);
         
     }
+  
 
 }
 ?>

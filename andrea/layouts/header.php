@@ -34,6 +34,7 @@
         </div>';
           }else {
             echo '<li class="nav-item"><a class="nav-link" href="singup">SingUp</a></li>';
+            echo '<li class="nav-item"><a class="nav-link" href="login">LogIn</a></li>';
           }?>
         
           <li class="nav-item"><a class="nav-link" href="index">Home</a></li>

@@ -6,8 +6,10 @@ use App\Abstracts\Container;
 use App\Post\PostControl;
 use App\Post\PostRepo;
 use App\Post\PostService;
-use App\Post\PostComment;
+use App\Comment\ComRepo;
+use App\Comment\ComControl;
 use App\Auth\UserControl;
+use App\Auth\UserModel;
 use App\Auth\UserService;
 use App\Auth\UserRepo;
 class Container1 extends Container
@@ -18,19 +20,26 @@ class Container1 extends Container
     {
 $this->receipts=[
 
-        "PostComment" => function(){
-            return new PostComment(
-                $this->make('PostControl')
-            );
-        },
+        "ComControl" => function(){
+                return new ComControl(
+                    $this->make('ComRepo')
+                );
+            },
+        "ComRepo" => function(){
+                return new ComRepo(
+                    $this->make('pdo')
+                );
+            },
             "PostControl" => function(){
                 return new PostControl(
-                    $this->make("PostService")
+                    $this->make("PostService"),
+                    $this->make("ComRepo")
                 );
             },
             "PostService" => function(){
                 return new PostService(
-                    $this->make('PostRepo')
+                    $this->make('PostRepo'),
+                    $this->make("UserRepo")
                 );
             },
             "PostRepo" => function(){
@@ -46,7 +55,8 @@ $this->receipts=[
                 return new UserService(
                     $this->make("UserRepo")
                 );
-            },
+            },   
+
             "UserRepo" => function(){
                 return new UserRepo(
                     $this->make("pdo")

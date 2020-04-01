@@ -11,6 +11,7 @@ class UserModel extends Model
    public $lastname;
    public $email;
    public $password;
-
 }
+
+
 ?>

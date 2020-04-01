@@ -2,48 +2,114 @@
 
 namespace App\Post;
 use App\Abstracts\Controller;
+use App\Auth\UserRepo;
+
 class PostService extends Controller
 {
 
-    public function __construct(PostRepo $postRepo)
+    public function __construct(PostRepo $postRepo,UserRepo $userRepo)
     {
         $this->PostRepo = $postRepo;
+        $this->UserRepo = $userRepo;
+        
     }
 
+     // Fetch All Post
     public function All()
     {
-     return $this->PostRepo->getAll() ;
-
+    return $this->PostRepo->getAll() ;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function checkData($data,$image)
+    //Fetch a Post By ID
+    public function fetchPost($id)
     {
+        if($this->PostRepo->getById($id))
+        {
+           return $this->PostRepo->getById($id);
+            
+        }else
+        {
+            return false;
+        }
+    }
+    //Make New Post.
+    public function newPost($data,$image)
+    {
+            //Pass The Image And Take The Image Path
             $imgPath= $this->img($image);
-           
+            //Check The Image Path And Set It in The Data Post.
             if($imgPath){
                 $data['img'] = $imgPath;
+                //Insert The New Post With Image Path
+                $data['user_id']=$_SESSION['user_id'];
                 $this->PostRepo->insert($data);
                 return true;
-            }else {
+            }
+            else {
                 return false;
             }
           
     }
 
+
+
+
+
+
+
+
+
+    //Edit The Post
+    public function update($data,$image)
+    {
+        $error= "";
+        if(!empty($image['img']['name']) )
+        {
+            $image = $this->img($_FILES);
+            if($image)
+            {
+                $data['img'] = $image;
+            }
+            else
+            {
+            $error = "the image should be png,jpg and jpeg and the max size is 500*1024 and don't have a error.";
+            } 
+        }
+        else
+        {
+           $image = $data['img'];
+        }
+ 
+        //Set The New Data
+        if(!empty($data['title']) AND !empty($data['content'])){
+            $id = $data['id'];
+            $this->PostRepo->update($id,$data);
+        }
+        else{
+            $error = "you Should not leave the fields  empty."; 
+        }
+
+        if(!empty($error))
+        {
+            return $error;
+        }
+    }
+
+    public function remove($id)
+    {
+        if($this->PostRepo->delete($id) == null){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+
+
+    //Upload The New Image And Check it.
     public function img($data)
     {
      
@@ -74,7 +140,7 @@ class PostService extends Controller
             }
         }
        if($image === ""){
-            //path for upload
+            //new path for upload
             $date = date("S j m Y",time()) ;
             $newDate = str_replace(" ","",$date);
             $newPath = $uploadDir . $filename . $newDate . '.' . $extension;

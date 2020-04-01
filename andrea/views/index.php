@@ -5,6 +5,7 @@
 	    		<div class="row d-flex">
 	    			<div class="col-xl-8 py-5 px-md-5">
 	    				<div class="row pt-md-4">
+						<?php ?>
 							<?php foreach($posts as $post):?>
 			    			<div class="col-md-12">
 									<div class="blog-entry ftco-animate d-md-flex">
@@ -14,7 +15,7 @@
 										$UrlImg = array_shift($array);
 										echo  '/' .$UrlImg;?>)"></a>
 										<div class="text text-2 pl-md-4">
-				              <h3 class="mb-2"><a href="single.html"><?php echo $post->title;?></a></h3>
+				              <h3 class="mb-2"><a href="single.html"><?php  echo $post->title;?></a></h3>
 				              <div class="meta-wrap">
 												<p class="meta">
 				              		<span><i class="icon-calendar mr-2"></i>June 28, 2019 </span>
@@ -38,7 +39,7 @@
 								<li class="page-item"><a class="page-link" href="#">Next</a></li>
 							</ul>
 						</nav>
-			
+
 	    			<div class="col-xl-4 sidebar ftco-animate bg-light pt-5">
 	            <div class="sidebar-box pt-md-4">
 	              <form action="#" class="search-form">

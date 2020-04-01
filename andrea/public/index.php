@@ -1,11 +1,25 @@
 <?php 
 require __DIR__ . "/../init.php";
-$path = $_SERVER['PATH_INFO'];
+if(isset($_SERVER['PATH_INFO']))
+{
+    $path = $_SERVER['PATH_INFO'];
+}
+if($_SERVER['PATH_INFO'] == "/" AND $_SERVER['PATH_INFO'] == "" )
+{
+    $_SERVER['PATH_INFO'] = "/index";
+}
+
+
 $pages = [
 "/index"    =>[
     "controller" => "PostControl",
     "action"     => "index"
 ],
+"/"    =>[
+    "controller" => "PostControl",
+    "action"     => "index"
+],
+
 "/article"  =>[
     "controller" => "PostControl",
     "action"     => "article"
@@ -13,6 +27,18 @@ $pages = [
 "/create"   =>[
     "controller" => "PostControl",
     "action"     => "create"
+],
+"/edit"   =>[
+    "controller" => "PostControl",
+    "action"     => "edit"
+],
+"/Cdelete"   =>[
+    "controller" => "PostControl",
+    "action"     => "comDelete"
+],
+"/delete"   =>[
+    "controller" => "PostControl",
+    "action"     => "delete"
 ],
 "/singup"   =>[
     "controller" => "UserControl",

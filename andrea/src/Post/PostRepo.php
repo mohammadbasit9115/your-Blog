@@ -1,8 +1,10 @@
 <?php 
 namespace App\Post;
 use App\Abstracts\Repository;
+use App\Auth\UserModel;
 class PostRepo extends Repository
 {
+    
     public function table()
     {
         return "posts";
@@ -17,10 +19,11 @@ class PostRepo extends Repository
         $model = $this->model();
         $stmt=$this->pdo->prepare(
             "INSERT INTO $table 
-            ( `title`, `content`, `img`)
+            ( `title`, `content`, `img`,`user_id`)
             VALUES 
-            ( :title, :content, :img)");
-            $stmt->execute([":title"=>$data['title'],"content"=>$data['content'],"img"=>$data['img']]);
+            ( :title, :content, :img,:user_id)");
+            $stmt->execute([":title"=>$data['title'],"content"=>$data['content'],"img"=>$data['img'],"user_id"=>$data['user_id']]);
     }
+
 }
 ?>

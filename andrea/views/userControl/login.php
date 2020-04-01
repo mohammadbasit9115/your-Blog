@@ -4,9 +4,9 @@
 <div class="form-row align-items-center">
 
   <div class="form-group col-7">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="text" name="userData" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <label for="exampleInputEmail1">Email address OR User Name</label>
+    <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <?php if(isset($error)):echo '<small id="emailHelp" style="color:red">' . $error . '</small>' ; endif ?>
   </div>
  
   <div class="form-group col-7">

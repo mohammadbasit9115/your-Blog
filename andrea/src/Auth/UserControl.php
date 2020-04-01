@@ -8,6 +8,7 @@ class UserControl extends Controller
     public function __construct(UserService $userService)
     {
         $this->UserService = $userService;
+      
     }
 
    
@@ -19,11 +20,10 @@ class UserControl extends Controller
                
              if($this->UserService->newUser($_POST))
              {
-    
-                 header("Location:index");
-                 exit();
+                header("Location:index");
+                exit();
              }
-             else
+          else
              {
                  echo "the email or password incorrect.";
              }
@@ -46,7 +46,7 @@ class UserControl extends Controller
                     header('Location: index');
                     exit();
                 }else{
-                    $error = "The User Name, The Email or Password is incorrect.";
+                    $error = "The User Name or The Email or Password is incorrect.";
                 }
             }
         }else{
